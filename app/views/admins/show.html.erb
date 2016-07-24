@@ -1,1 +1,8 @@
-<%= current_admin.inspect %>
+<div class="apps-header">
+  <div class="apps-body">
+    My Apps
+    <%= link_to "New", new_app_path, id: 'new-app-button'%>
+  </div>
+</div>
+<br>
+<%= render current_admin.apps %>

@@ -1,0 +1,13 @@
+<%= render partial: 'apps/app_header' %>
+<%= render partial: 'apps/app_subnav' %>
+<%= render partial: 'form', locals: { app: @app } %>
+
+<!-- DELETE APP BUTTON -->
+<div class="delete-app-form">
+  <div class="app-form-group">
+    <div class="app-form-group-label col-sm-3"></div>
+      <div id="delete-app-button" class="app-form-group-input-section col-sm-9">
+        <%= button_to 'Delete App', @app, class: 'app-form-input', method: :delete, data: { confirm: 'Are you sure?', disable_with: 'Deleting...' } %>
+      </div>
+  </div>
+</div>

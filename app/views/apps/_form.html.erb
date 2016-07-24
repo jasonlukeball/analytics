@@ -1,0 +1,32 @@
+<div class="app-form">
+
+    <%= form_for app do |f| %>
+        <div class="app-form-group">
+          <div class="app-form-group-label col-sm-3 ">
+            <p>App Name</p>
+          </div>
+          <div class="app-form-group-input-section col-sm-9 ">
+            <%= f.text_field :name, class: 'app-form-input form-control', placeholder: "App name" %>
+            <small class="error-message"><%= app.errors.messages[:name].first %></small>
+          </div>
+        </div>
+
+        <div class="app-form-group">
+          <div class="app-form-group-label col-sm-3 ">
+            <p>App URL</p>
+          </div>
+          <div class="app-form-group-input-section col-sm-9 ">
+            <%= f.text_field :url, class: 'app-form-input form-control', placeholder: "App URL" %>
+            <small class="error-message"><%= app.errors.messages[:url].first %></small>
+          </div>
+        </div>
+
+        <div>
+          <div class="col-sm-3"></div>
+          <div id="new-app-button" class="col-sm-9">
+            <%= f.submit app.new_record? ? 'Create App' : 'Save Changes' %>
+          </div>
+        </div>
+    <% end %>
+
+</div>

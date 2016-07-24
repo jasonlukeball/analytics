@@ -1,0 +1,23 @@
+<div class="app-show-nav">
+
+  <!-- APP OVERVIEW -->
+  <%= link_to app_path(@app) do %>
+      <%= app_nav_item_div((params[:controller] == 'apps' && params[:action] == 'show') , 'Overview') %>
+  <% end %>
+
+  <!-- APP USERS -->
+  <div class="app-nav-item">
+    <%= app_nav_item_div((params[:controller] == 'apps' && params[:action] == 'users') , 'Users') %>
+  </div>
+
+  <!-- APP EVENTS -->
+  <div class="app-nav-item">
+    <%= app_nav_item_div((params[:controller] == 'apps' && params[:action] == 'events') , 'Events') %>
+  </div>
+
+  <!-- APP SETTINGS -->
+  <%= link_to settings_app_path(@app) do %>
+      <%= app_nav_item_div((params[:controller] == 'apps' && params[:action] == 'settings') , 'Settings') %>
+  <% end %>
+
+</div>

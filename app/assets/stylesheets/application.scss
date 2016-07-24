@@ -26,6 +26,90 @@ a {
   text-decoration: none !important;
 }
 
+.float-right {
+  float: right;
+}
+
+.alert {
+  margin-bottom: 0;
+  border-radius: 0;
+  z-index: 100;
+  position: fixed;        // display alert on top of nav
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  border: 0;
+  height: 50px;
+  color: #ffffff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.alert-danger {
+  background-color: #D64242;
+}
+
+.alert-success {
+  background-color: #0B9444;
+}
+
+.error-message {
+  color: #D64242;
+  padding-left: 10px;
+}
+
+.footer {
+  height: 150px;
+}
+
+textarea:hover,
+input:hover,
+textarea:active,
+input:active,
+textarea:focus,
+input:focus,
+button:focus,
+button:active,
+button:hover {
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+
+/* ==========================================================================
+   NAVBAR
+   ========================================================================== */
+
+
+.navbar-default {
+  border: 0;
+  border-radius: 0;
+  background-color: #7761A8;
+  margin-bottom: 0;
+
+  .navbar-nav > li > a {
+    color: white;
+    padding-right: 20px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+  .navbar-nav > li > a:hover, .navbar-default a:active {
+    font-weight: 600;
+    color: white;
+  }
+
+  .navbar-toggle, .navbar-toggle:hover, .navbar-toggle:active, .navbar-toggle:focus {
+    color: #ffffff;
+    background-color: rgba(0,0,0,0.0);
+  }
+}
+
+
+
+
+
 
 /* ==========================================================================
    SIGN UP / LOG IN
@@ -97,6 +181,300 @@ a {
     line-height: 40px;
     background-color : transparent;
   }
+}
 
 
+/* ==========================================================================
+   APPS
+   ========================================================================== */
+
+
+.apps-header {
+
+  height: 60px;
+  background-color: #F7F8FB;
+  font-family: 'Open Sans', sans-serif;
+
+  .apps-body {
+    height: 60px;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-size: 16px;
+    line-height: 60px;
+
+    .apps-body-title {
+      width: 100%;
+      text-align: center;
+    }
+
+    #new-app-button {
+        margin-top: 12px;
+        float: right;
+        height: 35px;
+        width: 75px;
+        text-align: center;
+        border-radius: 4px;
+        line-height: 30px;
+        background-color : transparent;
+        border: 1px solid #79589F;
+        color: #79589F;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    #new-app-button:hover {
+      background-color: #FAF7FD;
+    }
+  }
+}
+
+
+/* ==========================================================================
+   APPS - LIST
+   ========================================================================== */
+
+
+.list-group {
+  border-bottom: 1px solid #e7ebf3;
+  margin-bottom: 0;
+}
+
+.list-group:hover {
+  background-color: #F7F8FB;
+}
+
+
+.app-list {
+  margin-left: 50px;
+  margin-right: 50px;
+  display: flex !important;
+  font-size: 14px;
+  height: 50px;
+  font-family: 'Open Sans', sans-serif;
+
+  i {
+    align-self: center;
+    color: #BEACD3;
+    font-size: 24px;
+  }
+
+  .app-name {
+    padding-left: 10px;
+    align-self: center;
+    flex: 1;                    // this is causing the app url to float right
+    flex-basis: 0%;
+    color: #3F3F44;
+  }
+
+  .app-url {
+    align-self: center;
+    text-align: right;
+    color: #3F3F44;
+  }
+}
+
+
+/* ==========================================================================
+   APPS - NEW
+   ========================================================================== */
+
+
+.app-form {
+  margin-right: 20px;
+  margin-left: 20px;
+
+  .app-form-group {
+    height: 100px;
+    margin-top: 40px !important;
+    border-bottom: 1px solid #e7ebf3;
+
+    .app-form-group-label {
+      padding-left: 0;
+      p {
+        font-size: 12pt
+      }
+    }
+
+    .app-form-group-input-section {
+      padding-left: 0;
+      padding-right: 0;
+
+      .app-form-input {
+        width: 65%;
+      }
+
+      .app-form-input:focus {
+        border: 1px solid #79589F;
+
+      }
+    }
+  }
+}
+
+#new-app-button {
+  margin-top: 40px;
+  padding-left: 0;
+  padding-right: 0;
+
+  input[type=submit] {
+
+    height: 40px;
+    width: 65%;
+    text-align: center;
+    border-radius: 4px;
+    line-height: 30px;
+    background-color : transparent;
+    border: 1px solid #79589F;
+    color: #79589F;
+    font-weight: bold;
+    font-size: 13px;
+
+  }
+
+  input[type=submit]:hover {
+    background-color: #FAF7FD;
+  }
+}
+
+
+/* ==========================================================================
+   APP - SHOW
+   ========================================================================== */
+
+.app-details {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#icon-right-chevron {
+  font-size: 14px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.app-header {
+
+  height: 60px;
+  background-color: #F7F8FB;
+  font-family: 'Open Sans', sans-serif;
+
+  .app-body {
+    height: 60px;
+    margin-left: 28px;
+    margin-right: 50px;
+    font-size: 16px;
+    line-height: 60px;
+
+    .my-apps-link {
+      color: #79589F;
+    }
+
+    .my-apps-link:hover {
+      color: #79589F;
+    }
+
+    .app-icon {
+      color: #BEACD3;
+      font-size: 17px;
+      padding-right: 3px;
+    }
+  }
+}
+
+
+.app-show-nav {
+  height: 50px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-bottom: 1px solid #e7ebf3;
+
+  .app-nav-item {
+    height: 50px;
+    display: inline-block;
+    margin-left: 4px;
+    margin-right: 4px;
+    transform: translateX(-10px);
+    width: 86px;
+    text-align: center;
+    line-height: 50px;
+    font-family: 'Open Sans', sans-serif;
+    color: #96A3B6;
+  }
+
+  .app-nav-item:hover {
+    border-bottom: 2px solid #e7ebf3;
+  }
+
+  .app-nav-item-active {
+    color: #89589F;
+    border-bottom: 1px solid #A996C0;
+  }
+
+  .app-nav-item-active:hover {
+    border-bottom: 2px solid #A996C0;
+  }
+}
+
+
+/* ==========================================================================
+   APP - SETTINGS
+   ========================================================================== */
+
+.delete-app-form {
+  margin-left: 20px;
+  margin-right: 20px;
+
+  #delete-app-button {
+    margin-top: 40px;
+    padding-left: 0 !important;
+    padding-right: 0;
+
+    form {
+      width: 65%;
+
+      input[type=submit] {
+        height: 40px;
+        width: 100%;
+        text-align: center;
+        border-radius: 4px;
+        line-height: 30px;
+        color: #ffffff;
+        background-color: #E25950;
+        border: 1px solid #E25950;
+        font-weight: bold;
+        font-size: 13px;
+      }
+
+      input[type=submit]:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+
+
+/* ==========================================================================
+   MEDIA QUERIES
+   ========================================================================== */
+
+
+@media (max-width: 767px) {
+
+  .app-form-input,
+  .button-delete-app,
+  #new-app-button > input[type=submit],
+  #delete-app-button > form
+  {
+    width: 100% !important;
+  }
+
+  .app-url {
+    display: none;
+  }
+
+  .apps-body {
+    margin-right: 15px !important;
+  }
 }

@@ -6,4 +6,6 @@ class Admin < ActiveRecord::Base
 
   validates :name, presence: true
 
+  has_many :apps
+
 end

@@ -1,0 +1,10 @@
+<%= render partial: 'apps/app_header' %>
+<%= render partial: 'apps/app_subnav' %>
+
+
+<div class="app-details">
+  <h1><%= @app.name %></h1>
+  <h4>url: <%= @app.url %></h4>
+  <h4>id_code: <%= @app.id_code %></h4>
+  <%= @app.inspect %>
+</div>

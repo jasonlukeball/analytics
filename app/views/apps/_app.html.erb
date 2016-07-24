@@ -1,0 +1,13 @@
+<%= link_to app_path(app) do %>
+    <div class="list-group">
+      <div id="app-<%= app.id %>" class="app-list">
+        <i class="ion-cube app"></i>
+        <div class="app-name">
+          <%= app.name %>
+        </div>
+        <div class="app-url">
+          <%= app.url %>
+        </div>
+      </div>
+    </div>
+<% end %>
