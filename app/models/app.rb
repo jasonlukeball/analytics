@@ -1,6 +1,7 @@
 class App < ActiveRecord::Base
 
   belongs_to :admin
+  has_many :events
 
   validates :name, presence: true
   validates :url,  presence: true

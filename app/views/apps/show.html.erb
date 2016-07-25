@@ -7,4 +7,12 @@
   <h4>url: <%= @app.url %></h4>
   <h4>id_code: <%= @app.id_code %></h4>
   <%= @app.inspect %>
+  <br>
+  <h4>Events</h4>
+
+  <ul>
+    <% @events.each do |key, value| %>
+        <li><%= "#{key}: #{value.count}" %></li>
+    <% end %>
+  </ul>
 </div>
