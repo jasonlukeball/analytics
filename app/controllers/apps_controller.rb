@@ -5,6 +5,7 @@ class AppsController < ApplicationController
     @apps = App.all
   end
 
+
   def show
     @app = App.find(params[:id])
     @events = @app.events.group_by(&:name)
@@ -31,6 +32,7 @@ class AppsController < ApplicationController
   def users
     @app = App.find(params[:id])
   end
+
 
   def events
     @app = App.find(params[:id])
