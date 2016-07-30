@@ -1,10 +1,31 @@
 class Api::V1::EventsController < Api::V1::BaseController
 
+  before_filter :set_access_control_headers
+
+
+  def preflight
+    head 200
+  end
+
+
+  def set_access_control_headers
+    # set CORS headers so controller actions will allow POST requests from other domains
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+    headers['Access-Control-Allow-Headers'] = 'Content-Type'
+  end
+
 
   def create
+
+    Rails.logger.info "=============== <HTTP ORIGIN> ==============="
+    Rails.logger.info request.env['HTTP_ORIGIN']
+    Rails.logger.info "=============== </HTTP ORIGIN> ==============="
+
+
     @app = App.find_by(id_code: params[:app_id])
-    @user = find_or_create_user
-    if @app
+    if @app # TODO && request.env['HTTP_ORIGIN'] == @app.url
+      @user = find_or_create_user
       if @user
         # ASSOCIATE EVENT WITH USER AND APP
         @event = @user.events.build(event_params)
@@ -16,7 +37,7 @@ class Api::V1::EventsController < Api::V1::BaseController
         save_event
       end
     else
-      render json: { error: "App not found", status: 403 }, status: 403
+      render json: "Unknown application", status: :unprocessable_entity
     end
   end
 
@@ -24,9 +45,9 @@ class Api::V1::EventsController < Api::V1::BaseController
   def find_or_create_user
     if params[:user] && params[:user][:email]
       user = User.find_or_create_by!(app: @app, email: params[:user][:email])
-      if user.name.blank? && params[:user][:name]
-        user.update_attribute(:name, params[:user][:name])
-      end
+      user.update_name(params[:user][:name])
+      user.update_web_sessions
+      user.update_last_seen_at
     else
       user = nil
     end
@@ -35,11 +56,10 @@ class Api::V1::EventsController < Api::V1::BaseController
 
 
   def save_event
-    if @event.valid?
-      @event.save!
-      render json: @event, status: 201
+    if @event.save
+      render json: @event, status: :created
     else
-      render json: { errors: @event.errors.messages, status: 400 }, status: 400
+      render json: { errors: @event.errors.messages }, status: :unprocessable_entity
     end
   end
 

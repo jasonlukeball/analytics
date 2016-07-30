@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   # api
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      match '/events', to: 'events#preflight', via: [:options]
       resources :events, only: [:create]
     end
   end

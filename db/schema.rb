@@ -57,10 +57,10 @@ ActiveRecord::Schema.define(version: 20160727061420) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.datetime "last_seen_at"
-    t.integer  "web_sessions"
+    t.integer  "web_sessions", default: 0
     t.integer  "app_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "email"
   end
 
