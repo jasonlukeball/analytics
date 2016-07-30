@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   belongs_to :app
   has_many :events
 
+  default_scope { order('last_seen_at DESC') }
+
   def update_name(name)
     update_attribute(:name, name)
   end

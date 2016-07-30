@@ -28,6 +28,15 @@ class AppsController < ApplicationController
   end
 
 
+  def users
+    @app = App.find(params[:id])
+  end
+
+  def events
+    @app = App.find(params[:id])
+  end
+
+
   def settings
     @app = App.find(params[:id])
   end

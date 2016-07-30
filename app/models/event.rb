@@ -4,4 +4,7 @@ class Event < ActiveRecord::Base
 
   validates :app, presence: true
   validates :name, presence: true
+
+  default_scope { order('created_at DESC') }
+
 end

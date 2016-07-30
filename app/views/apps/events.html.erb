@@ -1,0 +1,23 @@
+<%= render partial: 'apps/app_header' %>
+<%= render partial: 'apps/app_subnav' %>
+
+<div class="app-lists">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>EVENT</th>
+      <th class="">OCCURRED</th>
+      <th class="app-lists-column-collapse">USER</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @app.events.each do |event| %>
+        <tr>
+          <td><%= event.name %></td>
+          <td><%= if_recent_span(event.created_at) %></td>
+          <td class="app-lists-column-collapse"><%= event.user ? event.user.name : "Anonymous" %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

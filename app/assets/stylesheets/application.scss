@@ -468,6 +468,45 @@ button:hover {
 }
 
 
+/* ==========================================================================
+   APP - USERS & EVENTS LISTS
+   ========================================================================== */
+
+.app-lists {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 30px;
+
+  th {
+    font-size: 11px;
+    color: $color-primary;
+
+    tr {
+      border-bottom: 2px solid $color-border;
+    }
+  }
+
+  tbody {
+
+    tr {
+      height: 50px;
+      border-bottom: 1px solid $color-border;
+
+      td {
+        vertical-align: inherit;
+      }
+
+      .recent {
+        color: #3CC76A;
+      }
+    }
+
+    tr:hover {
+      background-color: $color-header;
+    }
+  }
+}
+
 
 /* ==========================================================================
    MEDIA QUERIES
@@ -484,7 +523,7 @@ button:hover {
     width: 100% !important;
   }
 
-  .app-url {
+  .app-url, .app-lists-column-collapse {
     display: none;
   }
 

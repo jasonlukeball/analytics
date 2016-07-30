@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # apps
   resources :apps do
     member do
+      get 'users'
+      get 'events'
       get 'settings'
     end
   end

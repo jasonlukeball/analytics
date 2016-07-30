@@ -6,14 +6,14 @@
   <% end %>
 
   <!-- APP USERS -->
-  <div class="app-nav-item">
+  <%= link_to users_app_path(@app) do %>
     <%= app_nav_item_div((params[:controller] == 'apps' && params[:action] == 'users') , 'Users') %>
-  </div>
+  <% end %>
 
   <!-- APP EVENTS -->
-  <div class="app-nav-item">
+  <%= link_to events_app_path(@app) do %>
     <%= app_nav_item_div((params[:controller] == 'apps' && params[:action] == 'events') , 'Events') %>
-  </div>
+  <% end %>
 
   <!-- APP SETTINGS -->
   <%= link_to settings_app_path(@app) do %>
