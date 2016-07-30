@@ -17,12 +17,6 @@ class Api::V1::EventsController < Api::V1::BaseController
 
 
   def create
-
-    Rails.logger.info "=============== <HTTP ORIGIN> ==============="
-    Rails.logger.info request.env['HTTP_ORIGIN']
-    Rails.logger.info "=============== </HTTP ORIGIN> ==============="
-
-
     @app = App.find_by(id_code: params[:app_id])
     if @app # TODO && request.env['HTTP_ORIGIN'] == @app.url
       @user = find_or_create_user
