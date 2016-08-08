@@ -2,17 +2,19 @@
 <%= render partial: 'apps/app_subnav' %>
 
 <div class="app-lists">
-    <table class="table">
-      <thead>
-      <tr>
-        <th>NAME</th>
-        <th>EMAIL</th>
-        <th>LAST SEEN</th>
-        <th class="app-lists-column-collapse">FIRST SEEN</th>
-        <th class="app-lists-column-collapse">SESSIONS</th>
-      </tr>
-      </thead>
-      <tbody>
+
+  <% if @app.users.any? %>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>NAME</th>
+          <th>EMAIL</th>
+          <th>LAST SEEN</th>
+          <th class="app-lists-column-collapse">FIRST SEEN</th>
+          <th class="app-lists-column-collapse">SESSIONS</th>
+        </tr>
+        </thead>
+        <tbody>
         <% @app.users.each do |user| %>
           <tr>
             <td><%= user.name %></td>
@@ -23,5 +25,8 @@
           </tr>
       <% end %>
       </tbody>
-    </table>
+      </table>
+  <% else %>
+    <h2>0 Users found</h2>
+  <% end %>
 </div>

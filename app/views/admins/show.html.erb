@@ -1,6 +1,6 @@
 <div class="apps-header">
   <div class="apps-body">
-    My Apps
+    My Apps <%= "(#{current_admin.apps.count})" %>
     <%= link_to "New", new_app_path, id: 'new-app-button'%>
   </div>
 </div>

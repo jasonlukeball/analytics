@@ -38,19 +38,6 @@ $color-button-primary-hover:    #8554BC;
 $color-button-secondary:        #8262A7;
 $color-button-secondary-hover:  #A386C5;
 
-
-
-.nav > li.dropdown.open {
-  position: static;
-}
-.nav > li.dropdown.open .dropdown-menu {
-  display:table; width: 100%; text-align: center; left:0; right:0;
-}
-.dropdown-menu>li {
-  display: table-cell;
-}
-
-
 $font-primary: 'Open Sans', sans-serif;
 
 * {
@@ -137,6 +124,10 @@ button:hover {
   background-color: $color-primary;
   margin-bottom: 0;
 
+  ul {
+    margin-right: 20px;
+  }
+
   .navbar-nav > li > a {
     color: white;
     padding-right: 20px;
@@ -144,8 +135,11 @@ button:hover {
   }
 
   .navbar-nav > li > a:hover, .navbar-default a:active {
-    font-weight: 600;
-    color: white;
+    color: darken(white, 10%);
+  }
+
+  .navbar-nav > li > a:focus {
+    color: darken(white, 10%);
   }
 
   .navbar-toggle, .navbar-toggle:hover, .navbar-toggle:active, .navbar-toggle:focus {
