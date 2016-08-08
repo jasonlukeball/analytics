@@ -9,6 +9,7 @@ class AppsController < ApplicationController
   def show
     @app = App.find(params[:id])
     @events = @app.events.group_by(&:name)
+    @pie_chart_data = @app.events.group_by(&:name).map { |k,v| {name: k, y: v.count} }.to_json
   end
 
 

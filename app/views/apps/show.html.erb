@@ -1,18 +1,77 @@
 <%= render partial: 'apps/app_header' %>
 <%= render partial: 'apps/app_subnav' %>
-
-
 <div class="app-details">
-  <h1><%= @app.name %></h1>
-  <h4>url: <%= @app.url %></h4>
-  <h4>id_code: <%= @app.id_code %></h4>
-  <%= @app.inspect %>
+  <h3><%= @app.name %>: <%= link_to @app.url, @app.url %></h3>
   <br>
-  <h4>Events</h4>
-
-  <ul>
-    <% @events.each do |key, value| %>
-        <li><%= "#{key}: #{value.count}" %></li>
-    <% end %>
-  </ul>
+  <% if @app.events.any? %>
+    <div id="events-pie-chart" class="pie-chart"></div>
+    <br>
+  <% end %>
+  <br>
+  <div class="installation">
+    <h4>Installation</h4>
+    <pre>
+      &lt;script&gt;
+      window.analyticsSettings = {
+        app_id: "<%= @app.id_code %>",             // your app_id (required)
+        name: "Example User",         // current user name (optional)
+        email: "user@example.com"     // current user email (optional)
+      };
+      &lt;/script&gt;
+      &lt;script src="http://analytics.jasonlukeball.com/analytics.js">&lt;/script&gt;
+    </pre>
+    <br>
+    <h4>Event Tracking</h4>
+    <pre>
+      analytics.track('created-todo');
+    </pre>
+  </div>
 </div>
+
+<% content_for :extended_scripts do %>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // PIE CHART
+            $(function () {
+                Highcharts.theme = {
+                    colors: ["#7761A8", LightenDarken("#7761A8", 30), LightenDarken("#7761A8", 60), LightenDarken("#7761A8", 90), LightenDarken("#7761A8", 120), LightenDarken("#7761A8", 30), LightenDarken("#7761A8", 60), LightenDarken("#7761A8", 90), LightenDarken("#7761A8", 120)]
+                };
+
+                Highcharts.setOptions(Highcharts.theme);    // Apply the theme
+
+                $('#events-pie-chart').highcharts({
+                    chart: {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                        type: 'pie'
+                    },
+
+                    title: {
+                        text: 'Events'
+                    },
+                    tooltip: {
+                        pointFormat: '<b>{point.y}</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: true,
+                                format: '<b>{point.name}</b>: {point.y}',
+                                style: {
+                                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                }
+                            }
+                        }
+                    },
+                    series: [{
+                        name: 'Events',
+                        data: <%= raw(@pie_chart_data) %>
+                    }]
+                });
+            });
+        });
+    </script>
+<% end %>

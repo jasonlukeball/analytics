@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160727061420) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 20160727061420) do
     t.string   "name"
   end
 
-  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
-  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
   create_table "apps", force: :cascade do |t|
     t.string   "url"
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160727061420) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "apps", ["admin_id"], name: "index_apps_on_admin_id"
+  add_index "apps", ["admin_id"], name: "index_apps_on_admin_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.integer  "app_id"
@@ -51,8 +54,8 @@ ActiveRecord::Schema.define(version: 20160727061420) do
     t.integer  "user_id"
   end
 
-  add_index "events", ["app_id"], name: "index_events_on_app_id"
-  add_index "events", ["user_id"], name: "index_events_on_user_id"
+  add_index "events", ["app_id"], name: "index_events_on_app_id", using: :btree
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -64,6 +67,10 @@ ActiveRecord::Schema.define(version: 20160727061420) do
     t.string   "email"
   end
 
-  add_index "users", ["app_id"], name: "index_users_on_app_id"
+  add_index "users", ["app_id"], name: "index_users_on_app_id", using: :btree
 
+  add_foreign_key "apps", "admins"
+  add_foreign_key "events", "apps"
+  add_foreign_key "events", "users"
+  add_foreign_key "users", "apps"
 end

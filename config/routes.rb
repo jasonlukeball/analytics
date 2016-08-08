@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   # apps
   resources :apps do
+    resources :events, only: [:show]
     member do
       get 'users'
       get 'events'

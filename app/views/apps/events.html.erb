@@ -13,7 +13,7 @@
     <tbody>
     <% @app.events.each do |event| %>
         <tr>
-          <td><%= event.name %></td>
+          <td><%= link_to event.name, app_event_path(event.app, event) %></td>
           <td><%= if_recent_span(event.created_at) %></td>
           <td class="app-lists-column-collapse"><%= event.user ? event.user.name : "Anonymous" %></td>
         </tr>

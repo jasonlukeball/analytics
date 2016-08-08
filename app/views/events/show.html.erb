@@ -1,0 +1,59 @@
+<%= render partial: 'apps/app_header' %>
+<%= render partial: 'apps/app_subnav' %>
+<div class="app-details">
+  <h3><%= "#{@event.name}: #{pluralize(@events.count, 'Occurrence', 'Occurrences')}" %></h3>
+  <br>
+</div>
+
+<% content_for :extended_scripts do %>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            // STOCK CHART
+            $(function () {
+                Highcharts.theme = {
+                    colors: ["#BEACD3"],
+                    navigator: {
+                        handles: {
+                            backgroundColor: '#666',
+                            borderColor: '#AAA'
+                        },
+                        outlineColor: '#CCC',
+                        maskFill: 'rgba(250, 247, 253, 0.52)',
+                        style: {
+                            fontFamily: "'Open Sans', sans-serif"
+                        },
+                        series: {
+                            lineColor: '#BEACD3'
+                        }
+                    }
+                };
+
+                Highcharts.setOptions(Highcharts.theme);    // Apply the theme
+
+
+                // Create the chart
+                $('#stock-chart').highcharts('StockChart', {
+                    rangeSelector : {
+                        selected : 1
+                    },
+
+                    title : {
+                        text : ''
+                    },
+
+                    series : [{
+                        name : 'Count',
+                        data : <%= raw(@chart_data) %>
+                    }]
+                });
+            });
+
+        });
+    </script>
+
+<% end %>
+
+
+<div id="stock-chart" style="height: 400px; min-width: 310px;"></div>
+
+

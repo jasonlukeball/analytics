@@ -15,16 +15,21 @@
 <nav id="mainNav" class="navbar navbar-default">
   <!--NAVBAR HEADER-->
   <div class="navbar-header">
+    <!-- NAVBAR COLLAPSED -->
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navLinks">
-      <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
     </button>
+    <!-- /NAVBAR COLLAPSED -->
   </div>
 
   <!--NAVBAR LINKS-->
   <div class="collapse navbar-collapse" id="navLinks">
     <ul class="nav navbar-nav navbar-right">
       <% if current_admin %>
-          <li><%= link_to "My Profile", admin_path(current_admin), :class => 'navbar-link' %></li>
+          <li><%= link_to "My Apps", admin_path(current_admin), :class => 'navbar-link' %></li>
           <li><%= link_to "Edit profile", edit_admin_registration_path, :class => 'navbar-link' %></li>
           <li><%= link_to "Sign Out", destroy_admin_session_path, method: :delete, :class => 'navbar-link'  %></li>
       <% else %>
@@ -63,8 +68,6 @@
   </div>
 
 
-
-
-
+    <%= yield :extended_scripts %>
 </body>
 </html>

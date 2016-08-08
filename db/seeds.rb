@@ -2,8 +2,8 @@
 # admins
 # ==========
 
-Admin.create!(name: "Jason Ball", email: "jasonlukeball@me.com", password: "password")
-Admin.create!(name: "Test User", email: "user@example.com", password: "password")
+Admin.create!(name: "Jason Ball", email: "jasonlukeball@me.com", password: "password") unless Admin.find_by(email: "jasonlukeball@me.com")
+Admin.create!(name: "Test User", email: "user@example.com", password: "password") unless Admin.find_by(email: "user@example.com")
 
 admins = Admin.all
 
@@ -41,12 +41,16 @@ events_array = ['created-todo', 'edited-todo', 'updated-todo', 'deleted-todo']
 
 # user events
 400.times do
-  Event.create!( app: apps.sample, user: users.sample, name: events_array.sample )
+  event = Event.create( app: apps.sample, user: users.sample, name: events_array.sample )
+  event.created_at = (rand*600).days.ago
+  event.save
 end
 
 # app events
 400.times do
-  Event.create!( app: apps.sample, name: events_array.sample )
+  event = Event.create( app: apps.sample, name: events_array.sample )
+  event.created_at = (rand*600).days.ago
+  event.save
 end
 
 

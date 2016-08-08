@@ -10,7 +10,7 @@ group :production do
 end
 
 group :development do
-  gem 'sqlite3'
+  gem 'pg'                            # Use postgresql as the database for Active Record
   gem 'web-console', '~> 2.0'
 end
 
@@ -38,3 +38,4 @@ gem 'faker'                             # Faker for seeding and tests
 gem 'intercom-rails'                    # Intercom
 gem 'devise'                            # Devise for authentication
 gem 'pry'                               # Alternate Rails Console
+gem 'groupdate'                         # https://github.com/ankane/groupdate ( requires postgresql / mysql )

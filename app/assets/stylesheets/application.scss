@@ -22,22 +22,56 @@
    GENERAL
    ========================================================================== */
 
-$color-primary:               #7761A8;
-$color-header:                #F7F8FB;
-$color-icon:                  #BEACD3;
-$color-text:                  #3F3F44;
-$color-alert:                 #E85959;
-$color-notice:                #5CBBB4;
-$color-border:                #E7EBF3;
-$color-border-nav-active:     #A996C0;
-$color-border-nav-inactive:   #96A3B6;
-$color-button-hover:          #FAF7FD;
+$color-primary:                 #7761A8;
+$color-secondary:               #BEACD3;
+$color-header:                  #F7F8FB;
+$color-icon:                    #BEACD3;
+$color-text:                    #716981;
+$color-alert:                   #E85959;
+$color-notice:                  #9BD78A;
+$color-border:                  #E7EBF3;
+$color-border-nav-active:       #A996C0;
+$color-border-nav-inactive:     #96A3B6;
+$color-button-hover:            #FAF7FD;
+$color-button-primary:          #784CAB;
+$color-button-primary-hover:    #8554BC;
+$color-button-secondary:        #8262A7;
+$color-button-secondary-hover:  #A386C5;
+
+
+
+.nav > li.dropdown.open {
+  position: static;
+}
+.nav > li.dropdown.open .dropdown-menu {
+  display:table; width: 100%; text-align: center; left:0; right:0;
+}
+.dropdown-menu>li {
+  display: table-cell;
+}
+
 
 $font-primary: 'Open Sans', sans-serif;
 
+* {
+  font-size: 100%;
+  font-family: $font-primary;
+  color: $color-text;
+}
+
+
+h2 {
+  color: $color-text;
+}
+
 
 a {
+  color: $color-primary;
   text-decoration: none !important;
+}
+
+a:hover {
+  color: lighten( $color-primary, 10% );
 }
 
 .float-right {
@@ -115,8 +149,13 @@ button:hover {
   }
 
   .navbar-toggle, .navbar-toggle:hover, .navbar-toggle:active, .navbar-toggle:focus {
-    color: white;
+    border: 0 !important;
     background-color: rgba(0,0,0,0.0);
+
+    .icon-bar {
+      background-color: white;
+    }
+
   }
 }
 
@@ -129,6 +168,27 @@ button:hover {
    SIGN UP / LOG IN
    ========================================================================== */
 
+
+.devise-wrapper {
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  color: #ffffff;
+  background-color: $color-primary;
+
+  a {
+    color: #ffffff !important;
+  }
+
+  h2 {
+    color: #ffffff;
+  }
+
+  .error-message {
+    color: #ffffff;
+  }
+}
+
 .sign-up-log-in {
   float: none;
   margin: 0 auto;
@@ -138,7 +198,7 @@ button:hover {
   color: black;
 
   a {
-    color: black;
+    color: $color-text;
   }
 
   button, html input[type="button"], input[type="reset"], input[type="submit"] {
@@ -146,8 +206,9 @@ button:hover {
     height: 40px;
     border: 0;
     border-radius: 3px;
-    color: black;
-    //background-color: white;
+    color: white;
+    background-color: $color-button-primary;
+    font-family: $font-primary;
   }
 
   button, html input[type="button"], input[type="reset"], input[type="submit"]:hover {
@@ -158,15 +219,20 @@ button:hover {
     float: right;
   }
 
-  #login-sign-up-button{
+  #login-sign-up-button {
     float: right;
     width: 100px;
     height: 40px;
     text-align: center;
-    border: 1px solid black;
+    color: #ffffff;
+    border: 1px solid #ffffff;
     border-radius: 3px;
     line-height: 40px;
     background-color : transparent;
+  }
+
+  #login-sign-up-button:hover {
+    background-color: lighten( $color-primary, 5% );
   }
 
   .dont-have-an-account {
@@ -174,6 +240,7 @@ button:hover {
     span {
       height: 40px;
       line-height: 40px;
+      color: #ffffff;
     }
   }
 
@@ -190,11 +257,22 @@ button:hover {
     width: 150px;
     height: 40px;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid $color-primary;
     border-radius: 3px;
     line-height: 40px;
+    color: $color-primary;
     background-color : transparent;
+    font-family: $font-primary;
   }
+
+  #cancel-account-button:hover {
+    background-color: $color-button-hover;
+  }
+}
+
+#remember-me-label {
+  font-weight: normal;
+  color: #ffffff;
 }
 
 
@@ -337,16 +415,16 @@ button:hover {
     text-align: center;
     border-radius: 4px;
     line-height: 30px;
-    background-color : transparent;
-    border: 1px solid $color-primary;
-    color: $color-primary;
+    background-color : $color-button-secondary;
+    border: 1px solid $color-button-secondary;
+    color: #ffffff;
     font-weight: bold;
     font-size: 13px;
 
   }
 
   input[type=submit]:hover {
-    background-color: $color-button-hover;
+    background-color: $color-button-secondary-hover;
   }
 }
 
@@ -358,6 +436,18 @@ button:hover {
 .app-details {
   margin-left: 20px;
   margin-right: 20px;
+
+  .installation {
+    margin: 0 auto;
+    max-width: 645px;
+
+    pre {
+      background-color: #F7F8FB;
+      margin-bottom: 0;
+      padding-bottom: 0;
+      padding-top: 15px;
+    }
+  }
 }
 
 #icon-right-chevron {
@@ -430,87 +520,92 @@ button:hover {
   }
 }
 
+.pie-chart {
+  height: 400px;
+  min-width: 310px;
+}
+
 
 /* ==========================================================================
-   APP - SETTINGS
-   ========================================================================== */
+ APP - SETTINGS
+ ========================================================================== */
 
 .delete-app-form {
-  margin-left: 20px;
-  margin-right: 20px;
+margin-left: 20px;
+margin-right: 20px;
 
-  #delete-app-button {
-    margin-top: 40px;
-    padding-left: 0 !important;
-    padding-right: 0;
+#delete-app-button {
+  margin-top: 40px;
+  padding-left: 0 !important;
+  padding-right: 0;
 
-    form {
-      width: 65%;
+  form {
+    width: 65%;
 
-      input[type=submit] {
-        height: 40px;
-        width: 100%;
-        text-align: center;
-        border-radius: 4px;
-        line-height: 30px;
-        color: #ffffff;
-        background-color: $color-alert;
-        border: 1px solid $color-alert;
-        font-weight: bold;
-        font-size: 13px;
-      }
+    input[type=submit] {
+      height: 40px;
+      width: 100%;
+      text-align: center;
+      border-radius: 4px;
+      line-height: 30px;
+      color: #ffffff;
+      background-color: $color-alert;
+      border: 1px solid $color-alert;
+      font-weight: bold;
+      font-size: 13px;
+    }
 
-      input[type=submit]:hover {
-        opacity: 0.8;
-      }
+    input[type=submit]:hover {
+      opacity: 0.8;
     }
   }
+}
 }
 
 
 /* ==========================================================================
-   APP - USERS & EVENTS LISTS
-   ========================================================================== */
+ APP - USERS & EVENTS LISTS
+ ========================================================================== */
 
 .app-lists {
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 30px;
+margin-left: 20px;
+margin-right: 20px;
+margin-top: 30px;
 
-  th {
-    font-size: 11px;
-    color: $color-primary;
+th {
+  font-size: 11px;
+  color: $color-primary;
 
-    tr {
-      border-bottom: 2px solid $color-border;
+  tr {
+    border-bottom: 2px solid $color-border;
+  }
+}
+
+tbody {
+
+  tr {
+    height: 50px;
+    border-bottom: 1px solid $color-border;
+
+    td {
+      vertical-align: inherit;
+    }
+
+    .recent {
+      color: #9BD78A;
     }
   }
 
-  tbody {
-
-    tr {
-      height: 50px;
-      border-bottom: 1px solid $color-border;
-
-      td {
-        vertical-align: inherit;
-      }
-
-      .recent {
-        color: #3CC76A;
-      }
-    }
-
-    tr:hover {
-      background-color: $color-header;
-    }
+  tr:hover {
+    background-color: $color-header;
   }
+}
 }
 
 
 /* ==========================================================================
-   MEDIA QUERIES
-   ========================================================================== */
+ MEDIA QUERIES
+ ========================================================================== */
 
 
 @media (max-width: 767px) {
@@ -518,8 +613,7 @@ button:hover {
   .app-form-input,
   .button-delete-app,
   #new-app-button > input[type=submit],
-  #delete-app-button > form
-  {
+  #delete-app-button > form {
     width: 100% !important;
   }
 
@@ -530,4 +624,13 @@ button:hover {
   .apps-body {
     margin-right: 15px !important;
   }
+
+}
+
+@media (max-width: 400px) {
+
+  .pie-chart {
+    height: 300px;
+  }
+
 }
