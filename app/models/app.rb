@@ -1,8 +1,8 @@
 class App < ActiveRecord::Base
 
   belongs_to :admin
-  has_many :users
-  has_many :events
+  has_many :users, dependent: :destroy
+  has_many :events, dependent: :destroy
 
   validates :name, presence: true
   validates :url,  presence: true

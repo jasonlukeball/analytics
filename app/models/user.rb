@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   after_create :update_last_seen_at
 
   belongs_to :app
-  has_many :events
+  has_many :events, dependent: :destroy
 
   default_scope { order('last_seen_at DESC') }
 
