@@ -114,6 +114,48 @@ button:hover {
 
 
 /* ==========================================================================
+   WELCOME
+   ========================================================================== */
+
+.welcome-wrapper {
+  margin-left: 50px;
+  margin-right: 50px;
+
+  h2, h3 {
+    text-align: center;
+  }
+
+  #demo-app-gif {
+    width: 100%;
+    max-width: 800px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+  }
+
+  .installation {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    pre {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      padding-top: 15px;
+      color: $color-text;
+      background-color: $color-header;
+      border: 0.5px solid $color-border;
+
+
+
+
+
+    }
+  }
+}
+
+
+/* ==========================================================================
    NAVBAR
    ========================================================================== */
 
@@ -436,10 +478,12 @@ button:hover {
     max-width: 645px;
 
     pre {
-      background-color: #F7F8FB;
       margin-bottom: 0;
       padding-bottom: 0;
       padding-top: 15px;
+      color: $color-text;
+      background-color: $color-header;
+      border: 0.5px solid $color-border;
     }
   }
 }

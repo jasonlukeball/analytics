@@ -1,2 +1,27 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="welcome-wrapper">
+  <br><br>
+    <h2>Analytics</h2>
+    <h3>A JavaScript API to track users & events in your web apps</h3>
+    <br><br>
+    <%= image_tag('analytics-demo.gif', id: 'demo-app-gif') %>
+    <br>
+      <div class="installation">
+        <br>
+        <h4>Easy Installation</h4>
+        <pre>
+          &lt;script&gt;
+          window.analyticsSettings = {
+            app_id: "your_app_id",
+            name: "Example User",
+            email: "user@example.com"
+          };
+          &lt;/script&gt;
+          &lt;script src="http://analytics.jasonlukeball.com/analytics.js">&lt;/script&gt;
+        </pre>
+        <br><br>
+        <h4>Track user actions in your apps</h4>
+        <pre>
+          analytics.track('created-todo');
+        </pre>
+      </div>
+</div>

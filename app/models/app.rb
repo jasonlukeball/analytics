@@ -9,6 +9,7 @@ class App < ActiveRecord::Base
 
   after_create  :generate_app_id
 
+  default_scope { order('name ASC') }
 
   def generate_app_id
     loop do
