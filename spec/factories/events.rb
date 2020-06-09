@@ -1,5 +1,5 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :event do
-    app nil
+    app { nil }
   end
 end

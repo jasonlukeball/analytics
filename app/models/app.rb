@@ -1,4 +1,4 @@
-class App < ActiveRecord::Base
+class App < ApplicationRecord
 
   belongs_to :admin
   has_many :users, dependent: :destroy

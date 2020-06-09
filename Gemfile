@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
+ruby '2.5.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
-ruby '2.2.1'
+gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 
 group :production do
   gem 'pg'                            # Postgres database on heroku
@@ -10,11 +10,11 @@ group :production do
 end
 
 group :development do
-  gem 'pg'                            # Use postgresql as the database for Active Record
   gem 'web-console', '~> 2.0'
 end
 
 group :development, :test do
+  gem 'sqlite3', '~> 1.3', '< 1.4'
   gem 'rspec-rails', '~> 3.0'
   gem 'nyan-cat-formatter'
   gem 'pry-rails'
@@ -22,7 +22,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'byebug'
   gem 'spring'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
 end
 
 
